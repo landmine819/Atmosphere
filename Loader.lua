@@ -1,4 +1,3 @@
-```lua
 local baseFolder = "Atmosphere"
 
 local files = {
@@ -55,4 +54,3 @@ if not createdSomething then
 end
 
 loadfile('Atmosphere/Main.lua')()
-```
