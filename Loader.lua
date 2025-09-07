@@ -1,8 +1,8 @@
 local baseFolder = "Kamiblue"
 
 local files = {
-    { name = "Library/GuiLibrary.lua", url = "https://raw.githubusercontent.com/landmine819/Atmosphere/refs/heads/main/GuiLibrary.lua" },
-    { name = "Main.lua",               url = "https://raw.githubusercontent.com/landmine819/Atmosphere/refs/heads/main/Main.lua" }
+    { name = "Library/GuiLibrary.lua", url = "https://raw.githubusercontent.com/landmine819/Kamiblue/refs/heads/main/GuiLibrary.lua" },
+    { name = "Main.lua",               url = "https://raw.githubusercontent.com/landmine819/Kamiblue/refs/heads/main/Main.lua" }
 }
 
 local subfolders = {
