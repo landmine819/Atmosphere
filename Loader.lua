@@ -3,7 +3,7 @@ local baseFolder = "Kamiblue"
 local files = {
     { name = "Library/GuiLibrary.lua", url = "https://raw.githubusercontent.com/landmine819/Kamiblue/refs/heads/main/GuiLibrary.lua" },
     { name = "Main.lua",               url = "https://raw.githubusercontent.com/landmine819/Kamiblue/refs/heads/main/Main.lua" },
-    { name = "Library/GameWhitelist.lua",      url = "https://raw.githubusercontent.com/landmine819/Kamiblue/refs/heads/main/GameWhitelist.lua }
+    { name = "Library/GameWhitelist.lua",      url = "https://raw.githubusercontent.com/landmine819/Kamiblue/refs/heads/main/GameWhitelist.lua" }
 }
 
 local subfolders = {
