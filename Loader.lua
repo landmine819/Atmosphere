@@ -1,25 +1,26 @@
-local baseFolder = "Atmosphere"
+local baseFolder = "Kamiblue"
 
 local files = {
-    { name = "GuiLibrary.lua", url = "https://raw.githubusercontent.com/landmine819/Atmosphere/refs/heads/main/GuiLibrary.lua" },
-    { name = "Main.lua",       url = "https://raw.githubusercontent.com/landmine819/Atmosphere/refs/heads/main/Main.lua" }
+    { name = "Library/GuiLibrary.lua", url = "https://raw.githubusercontent.com/landmine819/Atmosphere/refs/heads/main/GuiLibrary.lua" },
+    { name = "Main.lua",               url = "https://raw.githubusercontent.com/landmine819/Atmosphere/refs/heads/main/Main.lua" }
 }
 
 local subfolders = {
     "Configurations",
     "Discord Invites",
-    "Key System"
+    "Key System",
+    "Library"
 }
 
 if not isfolder or not writefile or not isfile then
-    error("❌ Your executor might not support writefile/isfile/isfolder.")
+    error("Your executor does not support writefile.")
 end
 
 local createdSomething = false
 
 if not isfolder(baseFolder) then
     makefolder(baseFolder)
-    print("📂 Created folder: " .. baseFolder)
+    print("Succesfully created folder: " .. baseFolder)
     createdSomething = true
 end
 
@@ -27,7 +28,7 @@ for _, sub in ipairs(subfolders) do
     local path = baseFolder .. "/" .. sub
     if not isfolder(path) then
         makefolder(path)
-        print("📂 Created folder: " .. path)
+        print("Succesfully created subfolder: " .. path)
         createdSomething = true
     end
 end
@@ -40,17 +41,23 @@ for _, fileInfo in ipairs(files) do
         end)
 
         if not success or type(content) ~= "string" or content == "" then
-            warn("⚠ Failed to fetch " .. fileInfo.name .. " from " .. fileInfo.url)
+            warn("Failed to fetch " .. fileInfo.name .. " from " .. fileInfo.url)
         else
+            local parent = fullPath:match("(.+)/[^/]+$")
+            if parent and not isfolder(parent) then
+                makefolder(parent)
+            end
+
             writefile(fullPath, content)
-            print("✅ Saved " .. fileInfo.name .. " to " .. fullPath)
+            print("Saved " .. fileInfo.name .. " to " .. fullPath)
             createdSomething = true
         end
     end
 end
 
 if not createdSomething then
-    print("✅ All files and folders already exist!")
+    print("All files and folders already exist!")
 end
 
-loadfile('Atmosphere/Main.lua')()
+task.wait()
+loadfile(baseFolder .. "/Main.lua")()
